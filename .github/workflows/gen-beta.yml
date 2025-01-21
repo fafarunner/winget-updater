@@ -64,6 +64,10 @@ jobs:
           # msiinfo export fafarunner_1.0.1+405_windows_x64_en-US.msi Property | sed -n 's/^ProductCode\s\+//p'
           echo "enproductcode=$(msiinfo export fafarunner_${{ needs.get_version.outputs.release }}.pre_windows_x64_en-US.msi Property | sed -n 's/^ProductCode\s\+//p' | cut -c 1-38)" >> $GITHUB_OUTPUT
           echo "zhproductcode=$(msiinfo export fafarunner_${{ needs.get_version.outputs.release }}.pre_windows_x64_zh-CN.msi Property | sed -n 's/^ProductCode\s\+//p' | cut -c 1-38)" >> $GITHUB_OUTPUT
+          
+          # msiinfo export fafarunner_1.0.1+405_windows_x64_en-US.msi Property | sed -n 's/^UpgradeCode\s\+//p'
+          echo "enupgradecode=$(msiinfo export fafarunner_${{ needs.get_version.outputs.release }}.pre_windows_x64_en-US.msi Property | sed -n 's/^UpgradeCode\s\+//p' | cut -c 1-38)" >> $GITHUB_OUTPUT
+          echo "zhupgradecode=$(msiinfo export fafarunner_${{ needs.get_version.outputs.release }}.pre_windows_x64_zh-CN.msi Property | sed -n 's/^UpgradeCode\s\+//p' | cut -c 1-38)" >> $GITHUB_OUTPUT
 
       - name: Get ReleaseDate
         id: date
@@ -86,6 +90,8 @@ jobs:
           sed -i 's/${zhsha256}/${{ steps.sha256.outputs.zhsha256 }}/' ./beta/Insco.FaFaRunner.Beta.installer.yaml
           sed -i "s/'\${enproductcode}'/'${{ steps.sha256.outputs.enproductcode }}'/g" ./beta/Insco.FaFaRunner.Beta.installer.yaml
           sed -i "s/'\${zhproductcode}'/'${{ steps.sha256.outputs.zhproductcode }}'/g" ./beta/Insco.FaFaRunner.Beta.installer.yaml
+          sed -i "s/'\${enupgradecode}'/'${{ steps.sha256.outputs.enupgradecode }}'/g" ./beta/Insco.FaFaRunner.Beta.installer.yaml
+          sed -i "s/'\${zhupgradecode}'/'${{ steps.sha256.outputs.zhupgradecode }}'/g" ./beta/Insco.FaFaRunner.Beta.installer.yaml
           
           sed -i 's/${version}/${{ needs.get_version.outputs.version }}/' ./beta/Insco.FaFaRunner.Beta.locale.en-US.yaml
           sed -i 's/${release}/${{ needs.get_version.outputs.release }}/' ./beta/Insco.FaFaRunner.Beta.locale.en-US.yaml

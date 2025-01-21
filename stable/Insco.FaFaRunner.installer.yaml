@@ -22,7 +22,7 @@ Installers:
     ProductCode: '${enproductcode}'
     AppsAndFeaturesEntries:
       - ProductCode: '${enproductcode}'
-        UpgradeCode: '{9e97bd2c-5329-45e7-ad77-34d60acae691}'
+        UpgradeCode: '${enupgradecode}'
   - Architecture: x64
     InstallerUrl: https://github.com/fafarunner/fafarunner/releases/download/v${release}/fafarunner_${release}_windows_x64_zh-CN.msi
     InstallerSha256: ${zhsha256}
@@ -30,6 +30,6 @@ Installers:
     ProductCode: '${zhproductcode}'
     AppsAndFeaturesEntries:
       - ProductCode: '${zhproductcode}'
-        UpgradeCode: '{9e97bd2c-5329-45e7-ad77-34d60acae691}'
+        UpgradeCode: '${zhupgradecode}'
 ManifestType: installer
 ManifestVersion: 1.9.0
