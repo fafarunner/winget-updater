@@ -4,7 +4,7 @@
 PackageIdentifier: Insco.FaFaRunner
 PackageVersion: ${version}
 PackageLocale: zh-CN
-Publisher: Insco Ltd
+Publisher: Insco
 PublisherUrl: https://www.fafarunner.com
 PublisherSupportUrl: https://github.com/fafarunner/fafarunner/discussions
 PrivacyUrl: https://www.fafarunner.com/zh/legal/privacy
