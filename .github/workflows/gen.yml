@@ -20,8 +20,8 @@ jobs:
     name: Get version
     runs-on: ubuntu-22.04
     outputs:
-      version: ${{ steps.version_step.outputs.version }}
       release: ${{ steps.version_step.outputs.release }}
+      version: ${{ steps.version_step.outputs.version }}
     steps:
       - name: Set version
         id: version_step
@@ -55,19 +55,19 @@ jobs:
       - name: Get SHA256
         id: sha256
         run: |
-          curl -H "Authorization: Bearer ${{ secrets.FR_RELEASE_TOKEN }}" -fOL https://github.com/fafarunner/fafarunner/releases/download/v${{ needs.get_version.outputs.release }}/fafarunner_${{ needs.get_version.outputs.release }}_windows_x64_en-US.msi
-          curl -H "Authorization: Bearer ${{ secrets.FR_RELEASE_TOKEN }}" -fOL https://github.com/fafarunner/fafarunner/releases/download/v${{ needs.get_version.outputs.release }}/fafarunner_${{ needs.get_version.outputs.release }}_windows_x64_zh-CN.msi
+          curl -H "Authorization: Bearer ${{ secrets.FR_RELEASE_TOKEN }}" -fOL https://github.com/fafarunner/fafarunner/releases/download/v${{ needs.get_version.outputs.release }}/fafarunner-${{ needs.get_version.outputs.version }}-windows-x64-en-US.msi
+          curl -H "Authorization: Bearer ${{ secrets.FR_RELEASE_TOKEN }}" -fOL https://github.com/fafarunner/fafarunner/releases/download/v${{ needs.get_version.outputs.release }}/fafarunner-${{ needs.get_version.outputs.version }}-windows-x64-zh-CN.msi
           
-          echo "ensha256=$(sha256sum fafarunner_${{ needs.get_version.outputs.release }}_windows_x64_en-US.msi | cut -c 1-64 | tr '[:lower:]' '[:upper:]')" >> $GITHUB_OUTPUT
-          echo "zhsha256=$(sha256sum fafarunner_${{ needs.get_version.outputs.release }}_windows_x64_zh-CN.msi | cut -c 1-64 | tr '[:lower:]' '[:upper:]')" >> $GITHUB_OUTPUT
+          echo "ensha256=$(sha256sum fafarunner-${{ needs.get_version.outputs.version }}-windows-x64-en-US.msi | cut -c 1-64 | tr '[:lower:]' '[:upper:]')" >> $GITHUB_OUTPUT
+          echo "zhsha256=$(sha256sum fafarunner-${{ needs.get_version.outputs.version }}-windows-x64-zh-CN.msi | cut -c 1-64 | tr '[:lower:]' '[:upper:]')" >> $GITHUB_OUTPUT
           
-          # msiinfo export fafarunner_1.0.1+405_windows_x64_en-US.msi Property | sed -n 's/^ProductCode\s\+//p'
-          echo "enproductcode=$(msiinfo export fafarunner_${{ needs.get_version.outputs.release }}_windows_x64_en-US.msi Property | sed -n 's/^ProductCode\s\+//p' | cut -c 1-38)" >> $GITHUB_OUTPUT
-          echo "zhproductcode=$(msiinfo export fafarunner_${{ needs.get_version.outputs.release }}_windows_x64_zh-CN.msi Property | sed -n 's/^ProductCode\s\+//p' | cut -c 1-38)" >> $GITHUB_OUTPUT
+          # msiinfo export fafarunner-1.0.1.405-windows-x64-en-US.msi Property | sed -n 's/^ProductCode\s\+//p'
+          echo "enproductcode=$(msiinfo export fafarunner-${{ needs.get_version.outputs.version }}-windows-x64-en-US.msi Property | sed -n 's/^ProductCode\s\+//p' | cut -c 1-38)" >> $GITHUB_OUTPUT
+          echo "zhproductcode=$(msiinfo export fafarunner-${{ needs.get_version.outputs.version }}-windows-x64-zh-CN.msi Property | sed -n 's/^ProductCode\s\+//p' | cut -c 1-38)" >> $GITHUB_OUTPUT
           
-          # msiinfo export fafarunner_1.0.1+405_windows_x64_en-US.msi Property | sed -n 's/^UpgradeCode\s\+//p'
-          echo "enupgradecode=$(msiinfo export fafarunner_${{ needs.get_version.outputs.release }}_windows_x64_en-US.msi Property | sed -n 's/^UpgradeCode\s\+//p' | cut -c 1-38)" >> $GITHUB_OUTPUT
-          echo "zhupgradecode=$(msiinfo export fafarunner_${{ needs.get_version.outputs.release }}_windows_x64_zh-CN.msi Property | sed -n 's/^UpgradeCode\s\+//p' | cut -c 1-38)" >> $GITHUB_OUTPUT
+          # msiinfo export fafarunner-1.0.1.405-windows-x64-en-US.msi Property | sed -n 's/^UpgradeCode\s\+//p'
+          echo "enupgradecode=$(msiinfo export fafarunner-${{ needs.get_version.outputs.version }}-windows-x64-en-US.msi Property | sed -n 's/^UpgradeCode\s\+//p' | cut -c 1-38)" >> $GITHUB_OUTPUT
+          echo "zhupgradecode=$(msiinfo export fafarunner-${{ needs.get_version.outputs.version }}-windows-x64-zh-CN.msi Property | sed -n 's/^UpgradeCode\s\+//p' | cut -c 1-38)" >> $GITHUB_OUTPUT
 
       - name: Get ReleaseDate
         id: date

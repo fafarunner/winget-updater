@@ -36,6 +36,6 @@ Tags:
   - flutter
   - flame
   - bonfire
-ReleaseNotesUrl: https://raw.githubusercontent.com/fafarunner/fafarunner/v${release}.pre/CHANGELOG.md
+ReleaseNotesUrl: https://raw.githubusercontent.com/fafarunner/fafarunner/v${release}.rc/CHANGELOG.md
 ManifestType: defaultLocale
 ManifestVersion: 1.9.0
