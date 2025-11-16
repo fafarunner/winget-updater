@@ -5,12 +5,12 @@ PackageIdentifier: Insco.FaFaRunner.Beta
 PackageVersion: ${version}
 PackageLocale: en-US
 Publisher: Insco
-PublisherUrl: https://www.fafarunner.com
-PublisherSupportUrl: https://www.fafarunner.com/en/support
-PrivacyUrl: https://www.fafarunner.com/en/legal/privacy
+PublisherUrl: https://fafarunner.com
+PublisherSupportUrl: https://fafarunner.com/en/support
+PrivacyUrl: https://fafarunner.com/en/legal/privacy
 Author: kjxbyz
 PackageName: FaFa Runner Beta
-PackageUrl: https://www.fafarunner.com
+PackageUrl: https://fafarunner.com
 License: MIT
 LicenseUrl: https://raw.githubusercontent.com/fafarunner/fafarunner/main/LICENSE
 Copyright: Copyright (c) 2023 kjxbyz
