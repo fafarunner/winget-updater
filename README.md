@@ -1,6 +1,7 @@
 # WinGet-Updater
 
-> WinGet Automatic Updater for FaFaRunner. This repository is inspired by [Floorp-WinGet-Updater](https://github.com/Hibi-10000/Floorp-WinGet-Updater)
+> WinGet Automatic Updater for FaFaRunner. This repository is inspired
+> by [Floorp-WinGet-Updater](https://github.com/Hibi-10000/Floorp-WinGet-Updater)
 
 [![Test](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen.yml)
 [![Test](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen-beta.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen-beta.yml)
@@ -11,7 +12,8 @@
 
 1. First you need to fork [microsoft/winget-pkgs](https://github.com/microsoft/winget-pkgs)
 
-2. Second you need to create a [Personal access tokens (classic)](https://github.com/settings/tokens). Specify the `public_repo` scope for the PAT.
+2. Second you need to create a [Personal access tokens (classic)](https://github.com/settings/tokens). Specify the
+   `public_repo` scope for the PAT.
 
 The related repos are
 
