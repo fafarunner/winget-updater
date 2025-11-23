@@ -52,7 +52,7 @@ jobs:
         with:
           repository: ${{ github.repository_owner }}/winget-pkgs
           sparse-checkout: |
-            manifests/i/Insco
+            manifests/i/FaFaRunner
             .gitattributes
             .gitignore
           token: ${{ secrets.WINGET_UPDATER_TOKEN }}
@@ -67,14 +67,14 @@ jobs:
 
       - name: Create branch
         run: |
-          git branch Insco.FaFaRunner-${{ needs.get_version.outputs.version }}
-          git switch Insco.FaFaRunner-${{ needs.get_version.outputs.version }}
+          git branch FaFaRunner.FaFaRunner-${{ needs.get_version.outputs.version }}
+          git switch FaFaRunner.FaFaRunner-${{ needs.get_version.outputs.version }}
 
       - name: Download a Build Artifact
         uses: actions/download-artifact@v4
         with:
           name: manifest-${{ inputs.tag_name }}
-          path: manifests/i/Insco/FaFaRunner/${{ needs.get_version.outputs.version }}
+          path: manifests/i/FaFaRunner/FaFaRunner/${{ needs.get_version.outputs.version }}
 
       - name: Commit & Push
         run: |
@@ -82,8 +82,8 @@ jobs:
           git config --global user.name "${{ vars.GIT_NAME }}"
           git config --global core.autocrlf false
           git add .
-          git commit -m "New version: Insco.FaFaRunner version ${{ needs.get_version.outputs.version }}"
-          git push --set-upstream origin Insco.FaFaRunner-${{ needs.get_version.outputs.version }}
+          git commit -m "New version: FaFaRunner.FaFaRunner version ${{ needs.get_version.outputs.version }}"
+          git push --set-upstream origin FaFaRunner.FaFaRunner-${{ needs.get_version.outputs.version }}
 
   pr:
     if: ${{ inputs.is_pr }}
@@ -101,6 +101,6 @@ jobs:
           gh pr create \
             --repo https://github.com/microsoft/winget-pkgs \
             --base master \
-            --head ${{ github.repository_owner }}:Insco.FaFaRunner-${{ needs.get_version.outputs.version }} \
-            --title "New version: Insco.FaFaRunner version ${{ needs.get_version.outputs.version }}" \
+            --head ${{ github.repository_owner }}:FaFaRunner.FaFaRunner-${{ needs.get_version.outputs.version }} \
+            --title "New version: FaFaRunner.FaFaRunner version ${{ needs.get_version.outputs.version }}" \
             --body "### Pull request created by [FaFaRunner-WinGet-Updater](https://github.com/${{ github.repository }}) workflow run [#${{ github.run_number }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/attempts/${{ github.run_attempt }})"

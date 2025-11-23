@@ -89,31 +89,31 @@ jobs:
 
       - name: Replace
         run: |
-          sed -i 's/${version}/${{ needs.get_version.outputs.version }}/g' ./stable/Insco.FaFaRunner.installer.yaml
-          sed -i 's/${release}/${{ needs.get_version.outputs.release }}/g' ./stable/Insco.FaFaRunner.installer.yaml
-          sed -i 's/${releasedate}/${{ steps.date.outputs.releasedate }}/' ./stable/Insco.FaFaRunner.installer.yaml
-          sed -i 's/${ensha256}/${{ steps.sha256.outputs.ensha256 }}/' ./stable/Insco.FaFaRunner.installer.yaml
-          sed -i 's/${zhsha256}/${{ steps.sha256.outputs.zhsha256 }}/' ./stable/Insco.FaFaRunner.installer.yaml
-          sed -i "s/'\${enproductcode}'/'${{ steps.sha256.outputs.enproductcode }}'/g" ./stable/Insco.FaFaRunner.installer.yaml
-          sed -i "s/'\${zhproductcode}'/'${{ steps.sha256.outputs.zhproductcode }}'/g" ./stable/Insco.FaFaRunner.installer.yaml
-          sed -i "s/'\${enupgradecode}'/'${{ steps.sha256.outputs.enupgradecode }}'/g" ./stable/Insco.FaFaRunner.installer.yaml
-          sed -i "s/'\${zhupgradecode}'/'${{ steps.sha256.outputs.zhupgradecode }}'/g" ./stable/Insco.FaFaRunner.installer.yaml
+          sed -i 's/${version}/${{ needs.get_version.outputs.version }}/g' ./stable/FaFaRunner.FaFaRunner.installer.yaml
+          sed -i 's/${release}/${{ needs.get_version.outputs.release }}/g' ./stable/FaFaRunner.FaFaRunner.installer.yaml
+          sed -i 's/${releasedate}/${{ steps.date.outputs.releasedate }}/' ./stable/FaFaRunner.FaFaRunner.installer.yaml
+          sed -i 's/${ensha256}/${{ steps.sha256.outputs.ensha256 }}/' ./stable/FaFaRunner.FaFaRunner.installer.yaml
+          sed -i 's/${zhsha256}/${{ steps.sha256.outputs.zhsha256 }}/' ./stable/FaFaRunner.FaFaRunner.installer.yaml
+          sed -i "s/'\${enproductcode}'/'${{ steps.sha256.outputs.enproductcode }}'/g" ./stable/FaFaRunner.FaFaRunner.installer.yaml
+          sed -i "s/'\${zhproductcode}'/'${{ steps.sha256.outputs.zhproductcode }}'/g" ./stable/FaFaRunner.FaFaRunner.installer.yaml
+          sed -i "s/'\${enupgradecode}'/'${{ steps.sha256.outputs.enupgradecode }}'/g" ./stable/FaFaRunner.FaFaRunner.installer.yaml
+          sed -i "s/'\${zhupgradecode}'/'${{ steps.sha256.outputs.zhupgradecode }}'/g" ./stable/FaFaRunner.FaFaRunner.installer.yaml
           
-          sed -i 's/${version}/${{ needs.get_version.outputs.version }}/' ./stable/Insco.FaFaRunner.locale.en-US.yaml
-          sed -i 's/${release}/${{ needs.get_version.outputs.release }}/' ./stable/Insco.FaFaRunner.locale.en-US.yaml
+          sed -i 's/${version}/${{ needs.get_version.outputs.version }}/' ./stable/FaFaRunner.FaFaRunner.locale.en-US.yaml
+          sed -i 's/${release}/${{ needs.get_version.outputs.release }}/' ./stable/FaFaRunner.FaFaRunner.locale.en-US.yaml
           
-          sed -i 's/${version}/${{ needs.get_version.outputs.version }}/' ./stable/Insco.FaFaRunner.locale.zh-CN.yaml
-          sed -i 's/${release}/${{ needs.get_version.outputs.release }}/' ./stable/Insco.FaFaRunner.locale.zh-CN.yaml
+          sed -i 's/${version}/${{ needs.get_version.outputs.version }}/' ./stable/FaFaRunner.FaFaRunner.locale.zh-CN.yaml
+          sed -i 's/${release}/${{ needs.get_version.outputs.release }}/' ./stable/FaFaRunner.FaFaRunner.locale.zh-CN.yaml
           
-          sed -i 's/${version}/${{ needs.get_version.outputs.version }}/' ./stable/Insco.FaFaRunner.yaml
+          sed -i 's/${version}/${{ needs.get_version.outputs.version }}/' ./stable/FaFaRunner.FaFaRunner.yaml
           
-          # sed -i 's@${releasenote-en}@${{ steps.releasenote.outputs.url }}@' ./stable/Insco.FaFaRunner.locale.en-US.yaml
-          # sed -i 's@${releasenote-zh}@${{ steps.releasenote.outputs.url-zh }}@' ./stable/Insco.FaFaRunner.locale.zh-CN.yaml
+          # sed -i 's@${releasenote-en}@${{ steps.releasenote.outputs.url }}@' ./stable/FaFaRunner.FaFaRunner.locale.en-US.yaml
+          # sed -i 's@${releasenote-zh}@${{ steps.releasenote.outputs.url-zh }}@' ./stable/FaFaRunner.FaFaRunner.locale.zh-CN.yaml
 
       #- id: yq-x64
       #  uses: mikefarah/yq@v4
       #  with:
-      #    cmd: yq eval '.Installers.[] | select(.Architecture == "x64") | .InstallerURL' 'Insco.FaFaRunner.installer.yml'
+      #    cmd: yq eval '.Installers.[] | select(.Architecture == "x64") | .InstallerURL' 'FaFaRunner.FaFaRunner.installer.yml'
       #
       #- name: CalcHash & Replace
       #  run: |
@@ -123,6 +123,6 @@ jobs:
         with:
           name: manifest-${{ inputs.tag_name }}
           path: |
-            ./stable/Insco.FaFaRunner.installer.yaml
-            ./stable/Insco.FaFaRunner.locale.*.yaml
-            ./stable/Insco.FaFaRunner.yaml
+            ./stable/FaFaRunner.FaFaRunner.installer.yaml
+            ./stable/FaFaRunner.FaFaRunner.locale.*.yaml
+            ./stable/FaFaRunner.FaFaRunner.yaml
