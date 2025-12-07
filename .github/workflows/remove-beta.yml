@@ -45,7 +45,7 @@ jobs:
         with:
           repository: ${{ github.repository_owner }}/winget-pkgs
           sparse-checkout: |
-            manifests/i/FaFaRunner
+            manifests/f/FaFaRunner
             .gitattributes
             .gitignore
           token: ${{ secrets.WINGET_UPDATER_TOKEN }}
@@ -64,7 +64,7 @@ jobs:
           git switch Remove-FaFaRunner.FaFaRunner.Beta-${{ needs.get_version.outputs.version }}
 
       - name: Remove version
-        run: rm -rf manifests/i/FaFaRunner/FaFaRunner/Beta/${{ needs.get_version.outputs.version }}
+        run: rm -rf manifests/f/FaFaRunner/FaFaRunner/Beta/${{ needs.get_version.outputs.version }}
 
       - name: Commit & Push
         run: |

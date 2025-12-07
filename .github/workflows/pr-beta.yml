@@ -52,7 +52,7 @@ jobs:
         with:
           repository: ${{ github.repository_owner }}/winget-pkgs
           sparse-checkout: |
-            manifests/i/FaFaRunner
+            manifests/f/FaFaRunner
             .gitattributes
             .gitignore
           token: ${{ secrets.WINGET_UPDATER_TOKEN }}
@@ -72,14 +72,14 @@ jobs:
 
       - name: Recreate directory
         run: |
-          rm -rf manifests/i/FaFaRunner/FaFaRunner/Beta
-          mkdir -pv manifests/i/FaFaRunner/FaFaRunner/Beta/${{ needs.get_version.outputs.version }}
+          rm -rf manifests/f/FaFaRunner/FaFaRunner/Beta
+          mkdir -pv manifests/f/FaFaRunner/FaFaRunner/Beta/${{ needs.get_version.outputs.version }}
 
       - name: Download a Build Artifact
         uses: actions/download-artifact@v4
         with:
           name: manifest-${{ inputs.tag_name }}.rc
-          path: manifests/i/FaFaRunner/FaFaRunner/Beta/${{ needs.get_version.outputs.version }}
+          path: manifests/f/FaFaRunner/FaFaRunner/Beta/${{ needs.get_version.outputs.version }}
 
       - name: Commit & Push
         run: |
