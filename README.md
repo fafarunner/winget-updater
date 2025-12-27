@@ -1,7 +1,6 @@
 # WinGet-Updater
 
-> WinGet Automatic Updater for FaFaRunner. This repository is inspired
-> by [Floorp-WinGet-Updater](https://github.com/Hibi-10000/Floorp-WinGet-Updater)
+> WinGet Automatic Updater for FaFaRunner.
 
 [![Test](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen.yml)
 [![Test](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen-beta.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen-beta.yml)
