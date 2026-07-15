@@ -3,9 +3,9 @@
 > WinGet Automatic Updater for FaFaRunner.
 
 [![Test](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen.yml)
-[![Test](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen-beta.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen-beta.yml)
+[![Test](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen-rc.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen-rc.yml)
 [![Test](https://github.com/fafarunner/WinGet-Updater/actions/workflows/pr.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/pr.yml)
-[![Test](https://github.com/fafarunner/WinGet-Updater/actions/workflows/pr-beta.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/pr-beta.yml)
+[![Test](https://github.com/fafarunner/WinGet-Updater/actions/workflows/pr-rc.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/pr-rc.yml)
 
 ## Requirements
 

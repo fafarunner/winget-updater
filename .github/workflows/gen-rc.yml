@@ -1,5 +1,5 @@
-name: Generate Manifest (Beta)
-run-name: Generate Manifest (Beta) ${{ inputs.tag_name }}
+name: Generate Manifest (RC)
+run-name: Generate Manifest (RC) ${{ inputs.tag_name }}
 
 on:
   workflow_dispatch:
@@ -116,7 +116,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          installer="./beta/FaFaRunner.FaFaRunner.Beta.installer.yaml"
+          installer="./rc/FaFaRunner.FaFaRunner.RC.installer.yaml"
 
           # 先做全局变量
           sed -i \
@@ -172,11 +172,11 @@ jobs:
             sed -i \
               -e "s/\${version}/${VERSION}/g" \
               -e "s/\${release}/${RELEASE}/g" \
-              "./beta/FaFaRunner.FaFaRunner.Beta.locale.${loc}.yaml"
+              "./rc/FaFaRunner.FaFaRunner.RC.locale.${loc}.yaml"
           done
 
           # 主入口 yaml
-          sed -i -e "s/\${version}/${VERSION}/g" ./beta/FaFaRunner.FaFaRunner.Beta.yaml
+          sed -i -e "s/\${version}/${VERSION}/g" ./rc/FaFaRunner.FaFaRunner.RC.yaml
         env:
           VERSION: ${{ needs.get_version.outputs.version }}
           RELEASE: ${{ needs.get_version.outputs.release }}
@@ -202,6 +202,6 @@ jobs:
         with:
           name: manifest-${{ inputs.tag_name }}.rc
           path: |
-            ./beta/FaFaRunner.FaFaRunner.Beta.installer.yaml
-            ./beta/FaFaRunner.FaFaRunner.Beta.locale.*.yaml
-            ./beta/FaFaRunner.FaFaRunner.Beta.yaml
+            ./rc/FaFaRunner.FaFaRunner.RC.installer.yaml
+            ./rc/FaFaRunner.FaFaRunner.RC.locale.*.yaml
+            ./rc/FaFaRunner.FaFaRunner.RC.yaml

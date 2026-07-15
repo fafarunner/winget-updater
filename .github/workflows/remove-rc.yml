@@ -1,5 +1,5 @@
-name: Remove Version (Beta)
-run-name: Remove Version (Beta) ${{ inputs.tag_name }}
+name: Remove Version (RC)
+run-name: Remove Version (RC) ${{ inputs.tag_name }}
 
 on:
   workflow_dispatch:
@@ -60,11 +60,11 @@ jobs:
 
       - name: Create branch
         run: |
-          git branch Remove-FaFaRunner.FaFaRunner.Beta-${{ needs.get_version.outputs.version }}
-          git switch Remove-FaFaRunner.FaFaRunner.Beta-${{ needs.get_version.outputs.version }}
+          git branch Remove-FaFaRunner.FaFaRunner.RC-${{ needs.get_version.outputs.version }}
+          git switch Remove-FaFaRunner.FaFaRunner.RC-${{ needs.get_version.outputs.version }}
 
       - name: Remove version
-        run: rm -rf manifests/f/FaFaRunner/FaFaRunner/Beta/${{ needs.get_version.outputs.version }}
+        run: rm -rf manifests/f/FaFaRunner/FaFaRunner/RC/${{ needs.get_version.outputs.version }}
 
       - name: Commit & Push
         run: |
@@ -72,8 +72,8 @@ jobs:
           git config --global user.name "${{ vars.GIT_NAME }}"
           git config --global core.autocrlf false
           git add .
-          git commit -m "Remove version: FaFaRunner.FaFaRunner.Beta version ${{ needs.get_version.outputs.version }}"
-          git push --set-upstream origin Remove-FaFaRunner.FaFaRunner.Beta-${{ needs.get_version.outputs.version }}
+          git commit -m "Remove version: FaFaRunner.FaFaRunner.RC version ${{ needs.get_version.outputs.version }}"
+          git push --set-upstream origin Remove-FaFaRunner.FaFaRunner.RC-${{ needs.get_version.outputs.version }}
 
   pr:
     if: ${{ inputs.is_pr }}
@@ -91,6 +91,6 @@ jobs:
           gh pr create \
             --repo https://github.com/microsoft/winget-pkgs \
             --base master \
-            --head ${{ github.repository_owner }}:Remove-FaFaRunner.FaFaRunner.Beta-${{ needs.get_version.outputs.version }} \
-            --title "Remove version: FaFaRunner.FaFaRunner.Beta version ${{ needs.get_version.outputs.version }}" \
+            --head ${{ github.repository_owner }}:Remove-FaFaRunner.FaFaRunner.RC-${{ needs.get_version.outputs.version }} \
+            --title "Remove version: FaFaRunner.FaFaRunner.RC version ${{ needs.get_version.outputs.version }}" \
             --body "### Pull request created by [FaFaRunner-WinGet-Updater](https://github.com/${{ github.repository }}) workflow run [#${{ github.run_number }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/attempts/${{ github.run_attempt }})"

@@ -1,5 +1,5 @@
-name: PR (Beta)
-run-name: PR (Beta) ${{ inputs.tag_name }}
+name: PR (RC)
+run-name: PR (RC) ${{ inputs.tag_name }}
 
 on:
   workflow_dispatch:
@@ -37,7 +37,7 @@ jobs:
           TAG_NAME: ${{ inputs.tag_name }}
 
   generate:
-    uses: ./.github/workflows/gen-beta.yml
+    uses: ./.github/workflows/gen-rc.yml
     needs: get_version
     with:
       tag_name: ${{ inputs.tag_name }}
@@ -67,19 +67,19 @@ jobs:
 
       - name: Create branch
         run: |
-          git branch FaFaRunner.FaFaRunner.Beta-${{ needs.get_version.outputs.version }}
-          git switch FaFaRunner.FaFaRunner.Beta-${{ needs.get_version.outputs.version }}
+          git branch FaFaRunner.FaFaRunner.RC-${{ needs.get_version.outputs.version }}
+          git switch FaFaRunner.FaFaRunner.RC-${{ needs.get_version.outputs.version }}
 
       - name: Recreate directory
         run: |
-          rm -rf manifests/f/FaFaRunner/FaFaRunner/Beta
-          mkdir -pv manifests/f/FaFaRunner/FaFaRunner/Beta/${{ needs.get_version.outputs.version }}
+          rm -rf manifests/f/FaFaRunner/FaFaRunner/RC
+          mkdir -pv manifests/f/FaFaRunner/FaFaRunner/RC/${{ needs.get_version.outputs.version }}
 
       - name: Download a Build Artifact
         uses: actions/download-artifact@v8
         with:
           name: manifest-${{ inputs.tag_name }}.rc
-          path: manifests/f/FaFaRunner/FaFaRunner/Beta/${{ needs.get_version.outputs.version }}
+          path: manifests/f/FaFaRunner/FaFaRunner/RC/${{ needs.get_version.outputs.version }}
 
       - name: Commit & Push
         run: |
@@ -87,8 +87,8 @@ jobs:
           git config --global user.name "${{ vars.GIT_NAME }}"
           git config --global core.autocrlf false
           git add .
-          git commit -m "New version: FaFaRunner.FaFaRunner.Beta version ${{ needs.get_version.outputs.version }}"
-          git push --set-upstream origin FaFaRunner.FaFaRunner.Beta-${{ needs.get_version.outputs.version }}
+          git commit -m "New version: FaFaRunner.FaFaRunner.RC version ${{ needs.get_version.outputs.version }}"
+          git push --set-upstream origin FaFaRunner.FaFaRunner.RC-${{ needs.get_version.outputs.version }}
 
   pr:
     if: ${{ inputs.is_pr }}
@@ -97,7 +97,7 @@ jobs:
       - commit
     runs-on: ubuntu-22.04
     environment: 
-      name: Deploy-Pull-Request-Beta
+      name: Deploy-Pull-Request-RC
     steps:
       - name: Create Pull Request
         env:
@@ -106,6 +106,6 @@ jobs:
           gh pr create \
             --repo https://github.com/microsoft/winget-pkgs \
             --base master \
-            --head ${{ github.repository_owner }}:FaFaRunner.FaFaRunner.Beta-${{ needs.get_version.outputs.version }} \
-            --title "New version: FaFaRunner.FaFaRunner.Beta version ${{ needs.get_version.outputs.version }}" \
+            --head ${{ github.repository_owner }}:FaFaRunner.FaFaRunner.RC-${{ needs.get_version.outputs.version }} \
+            --title "New version: FaFaRunner.FaFaRunner.RC version ${{ needs.get_version.outputs.version }}" \
             --body "### Pull request created by [FaFaRunner-WinGet-Updater](https://github.com/${{ github.repository }}) workflow run [#${{ github.run_number }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/attempts/${{ github.run_attempt }})"
