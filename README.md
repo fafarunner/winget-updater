@@ -2,10 +2,10 @@
 
 > WinGet Automatic Updater for FaFaRunner.
 
-[![Test](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen.yml)
-[![Test](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen-rc.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen-rc.yml)
-[![Test](https://github.com/fafarunner/WinGet-Updater/actions/workflows/pr.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/pr.yml)
-[![Test](https://github.com/fafarunner/WinGet-Updater/actions/workflows/pr-rc.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/pr-rc.yml)
+[![Generate Manifest (RC)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen-rc.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen-rc.yml)
+[![Generate Manifest](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/gen.yml)
+[![PR (RC)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/pr-rc.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/pr-rc.yml)
+[![PR Stable](https://github.com/fafarunner/WinGet-Updater/actions/workflows/pr.yml/badge.svg)](https://github.com/fafarunner/WinGet-Updater/actions/workflows/pr.yml)
 
 ## Requirements
 
